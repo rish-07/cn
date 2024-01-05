@@ -1,0 +1,377 @@
+-----------------------------------------------------------------               Branching & Mearging                 --------------------------------------------
+
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/git
+$ git init
+Initialized empty Git repository in C:/Users/Manoj Hrushikesh/Desktop/git/.git/
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/git (master)
+$ ls -a
+./  ../  .git/
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/git (master)
+$ ls -a -s
+total 8
+0 ./  4 ../  4 .git/
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/git (master)
+$ touch f1.txt f2.txt
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/git (master)
+$ git add .
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/git (master)
+$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   f1.txt
+        new file:   f2.txt
+
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/git (master)
+$ git commit -m "a b"
+[master (root-commit) 4cacfab] a b
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 f1.txt
+ create mode 100644 f2.txt
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/git (master)
+$ git log --oneline
+4cacfab (HEAD -> master) a b
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/git (master)
+$ git branch test
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/git (master)
+$ git checkout text
+error: pathspec 'text' did not match any file(s) known to git
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/git (master)
+$ git checkout test
+Switched to branch 'test'
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/git (test)
+$ touch f3.txt
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/git (test)
+$ git add .
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/git (test)
+$ git commit -m "c"
+[test 2958d28] c
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 f3.txt
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/git (test)
+$ touch f4.txt
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/git (test)
+$ git add .
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/git (test)
+$ git commit -m "d"
+[test 7380315] d
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 f4.txt
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/git (test)
+$ git log --oneline
+7380315 (HEAD -> test) d
+2958d28 c
+4cacfab (master) a b
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/git (test)
+$ git checkout master
+Switched to branch 'master'
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/git (master)
+$ git merge test
+Updating 4cacfab..7380315
+Fast-forward
+ f3.txt | 0
+ f4.txt | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 f3.txt
+ create mode 100644 f4.txt
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/git (master)
+$ git log
+commit 7380315a2bd79cc74d9768e080459cc31f83dc6b (HEAD -> master, test)
+Author: tyto <ty@lad.com>
+Date:   Thu Jan 4 21:10:42 2024 +0530
+
+    d
+
+commit 2958d282d5a0b5228ee0833eb09bd09c9eaf5cc7
+Author: tyto <ty@lad.com>
+Date:   Thu Jan 4 21:10:28 2024 +0530
+
+    c
+
+commit 4cacfabdb297fe6770c8904f1735e9ffb3a68aae
+Author: tyto <ty@lad.com>
+Date:   Thu Jan 4 21:07:40 2024 +0530
+
+    a b
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/git (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+--------------------------------------------------------------------------------resolve merge conflicts----------------------------------------------------------------------------
+***dev1***
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/op
+$ git init
+Initialized empty Git repository in C:/Users/Manoj Hrushikesh/Desktop/op/.git/
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/op (master)
+$ git branch dev
+fatal: not a valid object name: 'master'
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/op (master)
+$ git
+usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]
+           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+           [--config-env=<name>=<envvar>] <command> [<args>]
+
+These are common Git commands used in various situations:
+
+start a working area (see also: git help tutorial)
+   clone     Clone a repository into a new directory
+   init      Create an empty Git repository or reinitialize an existing one
+
+work on the current change (see also: git help everyday)
+   add       Add file contents to the index
+   mv        Move or rename a file, a directory, or a symlink
+   restore   Restore working tree files
+   rm        Remove files from the working tree and from the index
+
+examine the history and state (see also: git help revisions)
+   bisect    Use binary search to find the commit that introduced a bug
+   diff      Show changes between commits, commit and working tree, etc
+   grep      Print lines matching a pattern
+   log       Show commit logs
+   show      Show various types of objects
+   status    Show the working tree status
+
+grow, mark and tweak your common history
+   branch    List, create, or delete branches
+   commit    Record changes to the repository
+   merge     Join two or more development histories together
+   rebase    Reapply commits on top of another base tip
+   reset     Reset current HEAD to the specified state
+   switch    Switch branches
+   tag       Create, list, delete or verify a tag object signed with GPG
+
+collaborate (see also: git help workflows)
+   fetch     Download objects and refs from another repository
+   pull      Fetch from and integrate with another repository or a local branch
+   push      Update remote refs along with associated objects
+
+'git help -a' and 'git help -g' list available subcommands and some
+concept guides. See 'git help <command>' or 'git help <concept>'
+to read about a specific subcommand or concept.
+See 'git help git' for an overview of the system.
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/op (master)
+$ git branch dev1
+fatal: not a valid object name: 'master'
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/op (master)
+$ git status
+On branch master
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/op (master)
+$ git branch dev1
+fatal: not a valid object name: 'master'
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/op (master)
+$ git clone https://github.com/rish-07/gitDemo.git
+Cloning into 'gitDemo'...
+remote: Enumerating objects: 27, done.
+remote: Counting objects: 100% (27/27), done.
+remote: Compressing objects: 100% (17/17), done.
+remote: Total 27 (delta 2), reused 17 (delta 0), pack-reused 0
+Receiving objects: 100% (27/27), done.
+Resolving deltas: 100% (2/2), done.
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/op (master)
+$ ls
+gitDemo/
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/op (master)
+$ cd gitDemo
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/op/gitDemo (master)
+$ ls
+exp1/
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/op/gitDemo (master)
+$ git branch -a
+* master
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/master
+  remotes/origin/tytest
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/op/gitDemo (master)
+$ git branch dev1
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/op/gitDemo (master)
+$ git chechout dev1
+git: 'chechout' is not a git command. See 'git --help'.
+
+The most similar command is
+        checkout
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/op/gitDemo (master)
+$ git checkout dev1
+Switched to branch 'dev1'
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/op/gitDemo (dev1)
+$ touch f1.txt
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/op/gitDemo (dev1)
+$ v1 f1.txt
+bash: v1: command not found
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/op/gitDemo (dev1)
+$ vi f1.txt
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/op/gitDemo (dev1)
+$ cat f1.txt
+hello tyty
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/op/gitDemo (dev1)
+$ git add .
+warning: in the working copy of 'f1.txt', LF will be replaced by CRLF the next time Git touches it
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/op/gitDemo (dev1)
+$ git commit -m "dev1"
+[dev1 7140dc8] dev1
+ 1 file changed, 1 insertion(+)
+ create mode 100644 f1.txt
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/op/gitDemo (dev1)
+$ git checkout master
+Already on 'master'
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/op/gitDemo (master)
+$ git push
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 266 bytes | 266.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/rish-07/gitDemo.git
+   8c38a3a..71c582a  master -> master
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/op/gitDemo (master)
+$ git merge dev1
+Auto-merging f1.txt
+CONFLICT (add/add): Merge conflict in f1.txt
+Automatic merge failed; fix conflicts and then commit the result.
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/op/gitDemo (master|MERGING)
+$ vi f1.txt
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/op/gitDemo (master|MERGING)
+$ cat f1.txt
+hello tyson and tyty
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/op/gitDemo (master|MERGING)
+$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+        both added:      f1.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/op/gitDemo (master|MERGING)
+$ git add .
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/op/gitDemo (master|MERGING)
+$ git commit -m "resolved"
+[master fbfe0a2] resolved
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/op/gitDemo (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 2 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/op/gitDemo (master)
+$ git log
+commit fbfe0a2ffb4eb62eeb706592f89b66fde395ced8 (HEAD -> master)
+Merge: 71c582a 7140dc8
+Author: ty <ty@gmail.com>
+Date:   Thu Jan 4 22:02:27 2024 +0530
+
+    resolved
+
+
+***master***
+
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/op/gitDemo (dev1)
+$ git branch -a
+* dev1
+  master
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/master
+  remotes/origin/tytest
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/op/gitDemo (dev1)
+$ git branch master
+fatal: a branch named 'master' already exists
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/op/gitDemo (dev1)
+$ git checkout master
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/op/gitDemo (master)
+$ touch f1.txt
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/op/gitDemo (master)
+$ vi f1.txt
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/op/gitDemo (master)
+$ cat f1.txt
+ hello tyson
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/op/gitDemo (master)
+$ git add .
+warning: in the working copy of 'f1.txt', LF will be replaced by CRLF the next time Git touches it
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/op/gitDemo (master)
+$ git commit -m "master"
+[master 71c582a] master
+ 1 file changed, 1 insertion(+)
+ create mode 100644 f1.txt
+
+Manoj Hrushikesh@LAPTOP-V43MAVTN MINGW64 ~/Desktop/op/gitDemo (master)
+
